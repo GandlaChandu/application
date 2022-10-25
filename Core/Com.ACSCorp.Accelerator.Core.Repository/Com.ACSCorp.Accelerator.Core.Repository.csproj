@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <id>Com.ACSCorp.Accelerator.Core.Repository</id>
+    <version>1.0.8</version>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library contains core things required for the project.</description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Authorization\Com.ACSCorp.Accelerator.Core.Authorization.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Models\Com.ACSCorp.Accelerator.Core.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Repository.Abstraction\Com.ACSCorp.Accelerator.Core.Repository.Abstraction.csproj" />
+  </ItemGroup>
+
+</Project>

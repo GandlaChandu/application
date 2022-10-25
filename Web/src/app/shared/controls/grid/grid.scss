@@ -1,0 +1,106 @@
+@import '../../../../theme.scss';
+
+.col_hover {
+    color: $g-primary-color !important;
+}
+
+
+.rdt_TableHeadRow {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+.rdt_TableCol, .rdt_TableCol_Sortable {
+    font: {
+        weight: bold;
+        family: $g-grid-font-family;
+        size: $g-grid-font-size;
+    }
+
+    color: $g-primary-color !important;
+}
+
+.rdt_TableCol_Sortable {
+    font-weight: 600;
+    letter-spacing: $g-grid-header-font-spacing;
+    text-transform: $g-grid-header-transform;
+
+    &:hover {
+        @extend .col_hover;
+    }
+}
+
+.rdt_TableRow {
+    align-items: baseline;
+}
+
+.rdt_TableCell {
+    color: $g-table-cell-color;
+    letter-spacing: $g-grid-font-spacing;
+    padding: 15px;
+
+    font: {
+        weight: $g-font-weight !important;
+        family: $g-grid-font-family;
+        size: $g-grid-font-size;
+    }
+
+    div:first-child {
+        width: 100%;
+    }
+
+    button {
+        margin: 0px;
+        padding: 5px;
+
+        i {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+    }
+}
+
+.cTEQON {
+    min-height: 45px !important;
+}
+
+.cxtWCz:hover {
+    @extend .col_hover;
+}
+
+.eKRQOE {
+    @extend .col_hover;
+}
+
+.eKRQOE:hover {
+    @extend .col_hover;
+}
+
+.jHsXUi:hover {
+    @extend .col_hover;
+}
+
+.HWHoi:hover {
+    @extend .col_hover;
+}
+
+.dGqwdB {
+    color: $g-table-cell-color !important;
+    font-weight: $g-grid-header-font-weight;
+    letter-spacing: $g-grid-font-spacing;
+}
+
+
+.search-buttons {
+    width: 42% !important;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.search {
+    width: 45% !important;
+}
+
+.grid-link {
+    color: $g-primary-color !important;
+}

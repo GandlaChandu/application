@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.Models\Com.ACSCorp.Accelerator.SecurityAnalyzer.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.Reports\Com.ACSCorp.Accelerator.SecurityAnalyzer.Reports.csproj" />
+  </ItemGroup>
+
+</Project>

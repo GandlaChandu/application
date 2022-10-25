@@ -1,0 +1,152 @@
+@import "../../../theme.scss";
+
+header {
+    // max-height: 70px;
+    height: 70px;
+
+    border: {
+        bottom: {
+            color: $g-header-border-color;
+            style: solid;
+            width: thin;
+        }
+    }
+}
+
+.custombg {
+    background: transparent;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+    padding-right: 20px;
+    padding-left: 20px;
+    // background-color: $g-header-bg-color;
+    // background: -moz-linear-gradient(top, $g-header-bg-color 0%, $g-header-gradient-color 100%);
+    // background: -webkit-gradient(left top, left bottom, color-stop(0%, $g-header-bg-color), color-stop(100%, $g-header-gradient-color));
+    // background: -webkit-linear-gradient(top, $g-header-bg-color 0%, $g-header-gradient-color 100%);
+    // background: -o-linear-gradient(top, $g-header-bg-color 0%, $g-header-gradient-color 100%);
+    // background: -ms-linear-gradient(top, $g-header-bg-color 0%, $g-header-gradient-color 100%);
+    // background: linear-gradient(to bottom, $g-header-bg-color 0%, $g-header-gradient-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#238bcd', endColorstr='#3456bd', GradientType=0);
+}
+
+.btn-info {
+    background-color: transparent;
+    padding: 5px;
+    height: 50px;
+    border: none;
+    box-shadow: none !important;
+}
+
+.btn-info:hover {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+.btn-info:active {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.btn-info:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.fas {
+    font-weight: 900;
+    color: #202020;
+}
+
+.fa-align-left {
+    font-size: 1.5em;
+    width: 30px;
+    color: $g-primary-color;
+}
+
+.home-logo,
+.personDropdown .dropdown-content a {
+    cursor: pointer;
+}
+
+.logosize {
+    height: 60px;
+}
+
+.loggedinperson {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+.fa-bell{
+    font-size: 20px;
+}
+
+.fa-bell {
+    font-size: 20px;
+}
+
+//logo dropdown
+.personDropdown {
+    position: relative;
+    display: inline-block;
+
+    h4{
+        font-size: 16px;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        background-color: $g-header-dropdown-bg-color;
+        color: $g-primary-color;
+        min-width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border: 1px solid $g-header-dropdown-font-color;
+        padding: 10px 0 0;
+        z-index: 1;
+        left: auto;
+        right: 0;
+        top: 40px;
+
+        button {
+            outline: 0;
+            display: inline-block;
+            padding: 4px;
+            color: $g-primary-color;
+            background-color: $g-header-dropdown-bg-color;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.125);
+            text-align: left;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+#sidebarCollapse {
+    color: $g-primary-color;
+
+    button {
+        border-radius: 0px;
+
+        &:active {
+            border-radius: 0px;
+        }
+    }
+}
+
+.app-title {
+    padding-top: 15px;
+    margin-left: 5px;
+
+    text: {
+        transform: uppercase;
+        align: center;
+    }
+
+    color: $g-secondary-color;
+}

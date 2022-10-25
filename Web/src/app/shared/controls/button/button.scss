@@ -1,0 +1,120 @@
+@import '../../../../theme.scss';
+@import '../../../../mixins.scss';
+
+.font-icon-left {
+    padding: {
+        right: 8px;
+    }
+
+    .fa-pencil {
+        font-size: 16px;
+    }
+}
+
+.font-icon-right {
+    padding: {
+        left: 5px;
+    }
+}
+
+
+.btn-link {
+    font-size: $g-button-font-size;
+    font-weight: normal;
+    color: $g-secondary-color;
+}
+
+.btn-primary {
+    background-color: $g-secondary-color;
+    border-color: $g-secondary-color;
+    color: #ffffff;
+
+    &:disabled {
+        background-color: $g-secondary-color;
+        border-color: $g-secondary-color;
+        color: #ffffff;
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: $g-secondary-color;
+        border-color: $g-secondary-color;
+        box-shadow: none;
+        text-decoration: none;
+    }
+
+    &:focus {
+        background-color: transparent;
+        color: $g-secondary-color;
+        border-color: $g-secondary-color;
+        box-shadow: none;
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: $g-secondary-color !important;
+        border-color: $g-secondary-color !important;
+        color: #ffffff !important;
+    }
+}
+
+.btn-submit {
+    // background-color: $g-submit-color !important;
+
+    border: {
+        // color: $g-submit-color !important;
+    }
+
+    &:hover {
+        // border-color: $g-submit-color;
+    }
+
+    &:focus {
+        // border-color: $g-submit-color;
+        box-shadow: none;
+    }
+}
+
+/*.btn-bordered {
+    border-color: $g-nav-color;
+    color: $g-nav-color;
+
+    &:hover {
+        border-color: #10375c;
+        color: #10375c;
+    }
+
+    &:focus {
+        border-color: #10375c;
+        box-shadow: none;
+        color: #10375c;
+    }
+}*/
+
+.btn-reset {
+    @extend .btn-submit;
+    background-color: transparent !important;
+    color: $g-secondary-color !important;
+    border-color: $g-secondary-color !important;
+
+    &:hover {
+        background-color: $g-secondary-color !important;
+        color: #ffffff !important;
+    }
+}
+
+.help {
+    @include btn-mixin;
+    background-color: transparent !important;
+    border: none !important;
+    color: $g-primary-color !important;
+    padding: 0px !important;
+    border-radius: unset !important;
+    margin-left: 5px !important;
+
+    &:focus {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}

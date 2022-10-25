@@ -1,0 +1,276 @@
+stages:
+   - build
+   - deploy
+
+variables:
+   Node_Path: 'C:\Program Files\nodejs\npm.cmd'
+   MSBuild_Path: 'C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.build.runtime\15.3.409\contentFiles\any\net46\MSBuild.exe'
+ 
+Build_Web:
+    environment:
+        name: $CI_COMMIT_REF_NAME
+    only:
+     - _dev
+     - master
+    tags:
+      - windows
+    stage: build
+    script:
+       - cd Web
+       - echo "hey $TicketManagementAPI_Site"
+       #- npm install
+       - '& "$env:Node_Path" install env-cmd --save --scripts-prepend-node-path'
+       - '& "$env:Node_Path" install --scripts-prepend-node-path'
+       - '& "$env:Node_Path" run build"$npm_env" --scripts-prepend-node-path'
+       - 'copy-item web.config build/'
+       - Write-Host "React Application successfully build"
+    artifacts:
+       paths:
+         - Web/build
+   
+
+Build_ApplicationAnalyzer:
+        environment:
+            name: $CI_COMMIT_REF_NAME
+        only:
+           - _dev
+           - master
+        tags:
+          - windows
+        stage: build
+        script:
+        - cd ApplicationAnalyzer
+        - dotnet build
+        - dotnet publish --configuration Debug /p:EnvironmentName=$ASPNETCORE_ENVIRONMENT --output target
+        - Write-Host "Application Analyzer successfully build"
+        artifacts:
+          paths: 
+             - ApplicationAnalyzer/target
+               
+Build_CodeAnalyzer:
+        environment:
+            name: $CI_COMMIT_REF_NAME
+        only:
+          - _dev
+          - master
+        tags:
+          - windows
+        stage: build
+        script:
+        - cd CodeAnalyzer
+        - dotnet build
+        - dotnet publish --configuration Debug /p:EnvironmentName=$ASPNETCORE_ENVIRONMENT --output target
+        - Write-Host "Code Analyzer successfully build"
+        artifacts:
+          paths: 
+             - CodeAnalyzer/target
+        
+Build_SecurityAnalyzer:
+        environment:
+            name: $CI_COMMIT_REF_NAME
+        only:
+          - _dev
+          - master
+        tags:
+          - windows
+        stage: build
+        script:
+        - cd SecurityAnalyzer
+        - dotnet build
+        - dotnet publish --configuration Debug /p:EnvironmentName=$ASPNETCORE_ENVIRONMENT --output target
+        - Write-Host "Security Analyzer successfully build"
+        artifacts:
+          paths: 
+            - SecurityAnalyzer/target
+            
+Build_TicketManagementSystem:
+        environment:
+            name: $CI_COMMIT_REF_NAME
+        only:
+          - _dev
+          - master
+        tags:
+          - windows
+        stage: build
+        script:
+        - cd TicketManagementSystem
+        - dotnet build
+        - dotnet publish --configuration Debug /p:EnvironmentName=$ASPNETCORE_ENVIRONMENT --output target
+        - Write-Host "Ticket management system successfully build"
+        artifacts:
+          paths: 
+            - TicketManagementSystem/target
+            
+Build_QueueAPI:
+        environment:
+            name: $CI_COMMIT_REF_NAME
+        only:
+          - _dev
+          - master
+        tags:
+          - windows
+        stage: build
+        script:
+        - cd QueueAPI
+        - dotnet build
+        - dotnet publish --configuration Debug /p:EnvironmentName=$ASPNETCORE_ENVIRONMENT --output target
+        - Write-Host "QueueAPI successfully build"
+        artifacts:
+          paths: 
+            - QueueAPI/target
+ 
+deploy_ApplicationAnalyzer:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - echo "$UserName has $DecodedText"
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session ApplicationAnalyzer/target/* -Destination C:/temp -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/ApplicationAnalyzerAPI/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList $ApplicationAnalyzerAPI_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/ApplicationAnalyzerAPI/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/ApplicationAnalyzerAPI/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/ApplicationAnalyzerAPI/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+deploy_CodeAnalyzer:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session CodeAnalyzer/target/* -Destination C:/temp/ -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/CodeAnalyzerAPI/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList $CodeAnalyzerAPI_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/CodeAnalyzerAPI/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/CodeAnalyzerAPI/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/CodeAnalyzerAPI/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+deploy_SecurityAnalyzer:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session SecurityAnalyzer/target/* -Destination C:/temp -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/SecurityAnalyzerAPI/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList $SecurityAnalyzerAPI_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/SecurityAnalyzerAPI/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/SecurityAnalyzerAPI/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/SecurityAnalyzerAPI/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+deploy_TicketManagementSystem:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session TicketManagementSystem/target/* -Destination C:/temp -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/TicketManagementSystemAPI/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList $TicketManagementAPI_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/TicketManagementSystemAPI/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/TicketManagementSystemAPI/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/TicketManagementSystemAPI/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+deploy_QueueAPI:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session QueueAPI/target/* -Destination C:/temp -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/QueueAPI/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList $QueueAPIAPI_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/QueueAPI/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/QueueAPI/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/QueueAPI/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+deploy_Web:
+          environment:
+            name: $CI_COMMIT_REF_NAME
+          only:
+            - _dev
+            - master
+          tags:
+            - windows
+          stage: deploy
+          script:
+            - $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Password))
+            - $SecurePwd = $DecodedText | ConvertTo-SecureString -AsplainText -Force
+            - "$Creds= New-Object System.Management.Automation.PSCredential -ArgumentList $UserName,$SecurePwd"
+            - "$Session = New-PSSession $Deployment_Server -Credential $Creds"
+            - Copy-Item -ToSession $Session Web/build/* -Destination C:/temp -Recurse
+            - Copy-Item -ToSession $Session C:/App_Offline/App_Offline.htm -Destination C:/Apps/$Env/ApplicationAnalyzerWeb/
+            - Remove-PSSession -Session $Session
+            - Invoke-Command -ComputerName $Deployment_Server -Credential $Creds -ArgumentList ApplicationAnalyzerWeb_Site,$Env -ScriptBlock {
+                 Get-ChildItem -Path  C:/Apps/$using:Env/ApplicationAnalyzerWeb/ -Exclude App_Offline.htm | Remove-Item -Recurse -Force -Confirm:$false;
+                 Copy-Item C:/temp/* -Destination C:/Apps/$using:Env/ApplicationAnalyzerWeb/ -Recurse;
+                 Remove-Item C:/Apps/$using:Env/ApplicationAnalyzerWeb/App_Offline.htm;
+                 Remove-Item C:/temp/* -Recurse -Force;
+              }
+            - echo "Deploy to Dev Environment"
+
+
+
+
+

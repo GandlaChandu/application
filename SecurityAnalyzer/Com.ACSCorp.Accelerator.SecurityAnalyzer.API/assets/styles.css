@@ -1,0 +1,72 @@
+﻿body {
+    font-family: Calibri;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.firstpage {
+    padding: 25px;
+    page-break-after: always;
+}
+
+    .firstpage .summary div {
+        margin-top: 10px;
+    }
+
+    .firstpage .table-content {
+        float: right;
+        padding: 5px;
+        margin-top: 100px;
+    }
+
+        .firstpage .table-content h2 {
+            color: darkblue;
+        }
+
+.section {
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.severity-header {
+    text-align: left !important;
+    padding-left: 100px;
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+
+.left-align {
+    text-align: left;
+    word-break: break-all;
+}
+
+.break-all {
+    word-break: break-all;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    table td, table th {
+        border: 1px solid gray;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #e4e4e4;
+        font-size: 18px;
+    }
+
+h1 {
+    color: darkslateblue;
+}
+
+h2 {
+    color: dimgray;
+}

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <id>Com.ACSCorp.Accelerator.Core.HttpService</id>
+    <version>1.0.23</version>
+    <title>ACSCorp Core Service</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Conatins Http services</description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.HttpService.Abstraction\Com.ACSCorp.Accelerator.Core.HttpService.Abstraction.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Models\Com.ACSCorp.Accelerator.Core.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Utility\Com.ACSCorp.Accelerator.Core.Utility.csproj" />
+  </ItemGroup>
+</Project>

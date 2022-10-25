@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Id>Com.ACSCorp.Accelerator.Core.Models</Id>
+    <version>1.0.14</version>
+    <authors>Com.ACSCorp.Accelerator.Core.Models</authors>
+    <owners>Com.ACSCorp.Accelerator.Core.Models</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains the common models</description>
+    <copyright>Copyright ©2020 ACS Corporation</copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

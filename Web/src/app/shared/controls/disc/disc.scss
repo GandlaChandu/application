@@ -1,0 +1,112 @@
+@import '../../../../theme.scss';
+
+.disc-container {
+    min-height: 100px;
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    @media (max-width: 640px){
+        margin-bottom: 40px;
+    }
+}
+
+.disc-container:after {}
+
+.disc {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100px;
+    min-width: 100px;
+    display: flex;
+
+    border: {
+        style: solid;
+        width: 8px;
+        radius: 50%;
+    }
+
+    div:first-child {
+        width: 100%;
+        // height: 100%;
+
+        border: {
+            radius: 50%;
+            color: transparent;
+        }
+
+        // padding: 25%;
+        // background-color: white;
+        align-self: center;
+
+        p {
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0;
+
+            // padding: {
+            //     top: 15%;
+            //     bottom: 15%;
+            // }
+
+            border: {
+                radius: 50%;
+                color: transparent;
+            }
+
+            // display: flex;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+
+.disc-success {
+    // background-color: $g-success-color;
+    // border-color: $g-success-color;
+    color: $g-success-color;
+    font-weight: 700;
+}
+
+.disc-warning {
+    // background-color: $g-warning-color;
+    // border-color: $g-warning-color;
+    color: $g-warning-color;
+    font-weight: 700;
+}
+
+.disc-danger {
+    // background-color: $g-danger-color;
+    // border-color: $g-danger-color;
+    color: $g-danger-color;
+    font-weight: 700;
+}
+
+.disc-info {
+    // background-color: $g-info-color;
+    // border-color: $g-info-color;
+    color: $g-info-color;
+    font-weight: 700;
+}
+
+.disc-label {
+    font: {
+        weight: bolder;
+        size: $g-font-size;
+    }
+
+    color: $g-primary-font-color !important;
+    letter-spacing: $g-grid-header-font-spacing;
+
+    text: {
+        transform: capitalize;
+    }
+}

@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Com.ACSCorp.Accelerator.DMA.SchedulerWorkerService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        //"DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

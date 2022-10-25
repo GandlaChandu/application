@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Authorization" Version="1.0.21" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.HttpService" Version="1.0.22" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.RenderTemplateAdapter" Version="1.0.1" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Service" Version="1.0.0" />
+    <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.IRepository\Com.ACSCorp.Accelerator.CodeAnalyzer.IRepository.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.IService\Com.ACSCorp.Accelerator.CodeAnalyzer.IService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.Models\Com.ACSCorp.Accelerator.CodeAnalyzer.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.Reports\Com.ACSCorp.Accelerator.CodeAnalyzer.Reports.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter\Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.Validators\Com.ACSCorp.Accelerator.CodeAnalyzer.Validators.csproj" />
+  </ItemGroup>
+
+</Project>

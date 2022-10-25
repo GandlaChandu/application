@@ -1,0 +1,42 @@
+@import '../../../theme.scss';
+
+.expandable-parent {
+    display: flex;
+}
+
+.parent-node{
+}
+
+.parent-node-link {
+    font-size: $g-font-size !important;
+
+    padding: {
+        left: 0px;
+        right: 1px;
+    }
+
+    font-weight: $g-font-weight !important;
+    color: $g-primary-color !important;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.chb_node {
+    label {
+        &:first-child {
+            display: none;
+        }
+    }
+
+    padding: {
+        top: 5px;
+    }
+}
+
+.parent-child-list {
+    margin: {
+        left: 50px;
+    }
+}

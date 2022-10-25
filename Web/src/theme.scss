@@ -1,0 +1,152 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
+
+/* colors */
+
+$g-primary-color: #0070CD;
+$g-secondary-color: #EF7C00;
+$g-success-color: #28a745;
+$g-info-color: #20639b;
+$g-warning-color: #ffc107;
+$g-danger-color: #dc3545;
+$g-light-color: #f8f9fa;
+$g-invalid-color: $g-danger-color;
+$g-valid-color: $g-success-color;
+$g-primary-font-color: #0070CD;
+$g-submit-color: lighten($g-primary-font-color, 5%);
+$g-reset-color: $g-primary-font-color;
+$g-field-bold: 600;
+
+$g-table-btn-color: #4e4caa;
+$g-table-header-color: $g-submit-color; //#10375c7a;
+$g-table-cell-color: #000000;
+$g-table-font-color: #ffffff;
+
+$g-header-bg-color: $g-primary-font-color;
+$g-header-gradient-color: rgba(52, 86, 189, 1);
+$g-header-border-color: darken(white, 5%);
+$g-header-dropdown-font-color: #FFFFFF;
+$g-header-dropdown-bg-color: #FFFFFF;
+
+$g-heading-font-color: #0070CD;
+
+$g-body-bg-color: #FFFFFF;
+
+$g-nav-bg-color: lighten($g-header-bg-color, 3%);
+$g-nav-child-bg-color: lighten($g-nav-bg-color,7%);
+$g-nav-color: white;
+$g-nav-hover-color: $g-primary-color;
+$g-nav-bg-hover-color: $g-light-color;
+$g-nav-border-bg-color: white;
+
+$g-card-body-color: #CDCFD2;
+$g-card-header-color: $g-submit-color;
+
+$g-tab-bg-color: white;
+$g-tab-active-bg-color: $g-card-body-color;
+$g-tab-active-color: $g-primary-font-color;
+
+$g-font-color: #585858;
+$g-font-family: 'Work Sans', sans-serif;
+$g-font-weight: 400;
+$g-font-size: 14px;
+
+$g-heading-font-family: 'Work Sans', sans-serif;
+$g-heading-font-weight: 700;
+$g-heading-font-size: 24px;
+$g-heading-font-spacing: none;
+$g-header-text-transform: uppercase;
+
+$g-nav-font-weight: 700;
+$g-nav-font-size: 14px;
+$g-nav-font-family: 'Work Sans', sans-serif;
+
+$g-field-label-spacing: 0.5px;
+$g-field-label-weight: 500;
+$g-field-label-text-transform: none;
+
+$g-grid-header-font-spacing: 0.5px;
+$g-grid-header-font-size: none;
+$g-grid-header-font-weight: 500;
+$g-grid-header-transform: capitalize;
+
+$g-grid-font-spacing: 0.15px;
+$g-grid-font-size: 14px;
+$g-grid-font-family: $g-font-family;
+
+$g-button-font-weight: 600;
+$g-button-font-size: 12px;
+$g-button-font-spacing: 0.5px;
+$g-button-font-transform: capitalize;
+
+$g-dashboard-section-border-color: darken(white, 20%);
+
+/* colors */
+/*$g-primary-color: #007bff;
+$g-secondary-color: #6c757d;
+$g-success-color: #28a745;
+$g-info-color: #20639b;
+$g-warning-color: #ffc107;
+$g-danger-color: #dc3545;
+$g-light-color: #f8f9fa;
+$g-invalid-color: $g-danger-color;
+$g-valid-color: $g-success-color;
+$g-primary-font-color: #10375c;
+$g-submit-color: $g-primary-font-color;
+$g-reset-color: $g-primary-font-color;
+
+$g-table-btn-color: #4e4caa;
+$g-table-header-color: lighten($g-primary-font-color, 5%); //#10375c7a;
+$g-table-cell-color: #000000;
+$g-table-font-color: #ffffff;
+
+$g-header-bg-color: $g-primary-font-color;
+$g-header-gradient-color: rgba(52, 86, 189, 1);
+$g-header-border-color: darken(white, 5%);
+
+$g-heading-font-color: #10375c;
+
+$g-body-bg-color: #FFFFFF;
+
+$g-nav-bg-color: transparent;
+$g-nav-child-bg-color: $g-light-color ;//lighten($g-nav-bg-color,5%);
+$g-nav-color: #20639b;
+$g-nav-hover-color: $g-primary-font-color;
+$g-nav-bg-hover-color: #CBD1E1;
+$g-nav-border-bg-color: $g-info-color;
+
+$g-card-body-color: #e5e8f038;
+
+$g-font-color: #585858;
+$g-font-family: 'Work Sans', sans-serif;;
+$g-font-weight: 400;
+$g-font-size: 16px;
+
+$g-heading-font-family: 'Work Sans', sans-serif;;
+$g-heading-font-weight: 700;
+$g-heading-font-size: 28px;
+$g-heading-font-spacing: 2px;
+$g-header-text-transform: uppercase;
+
+$g-nav-font-weight: 700;
+$g-nav-font-size: 14px;
+$g-nav-font-family: $g-heading-font-family;
+
+$g-field-label-spacing: 1px;
+$g-field-label-weight: bold;
+$g-field-label-text-transform: none;
+
+$g-grid-header-font-spacing: 1px;
+$g-grid-header-font-size: none;
+$g-grid-header-font-weight: 500;
+$g-grid-header-transform: uppercase;
+
+$g-grid-font-spacing: 0.5px;
+$g-grid-font-size: 14px;
+$g-grid-font-family: $g-font-family;
+
+$g-button-font-weight: 700;
+$g-button-font-size: 12px;
+$g-button-font-spacing: 1.5px;
+$g-button-font-transform: uppercase;
+*/

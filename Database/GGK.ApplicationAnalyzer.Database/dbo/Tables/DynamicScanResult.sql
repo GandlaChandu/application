@@ -1,0 +1,25 @@
+﻿CREATE TABLE "SecurityAnalyzer"."DynamicScanResult" (
+    "Id"            INT             GENERATED ALWAYS AS IDENTITY NOT NULL,
+    "DynamicScanId" INT             NOT NULL,
+    "AlertMessage"  TEXT            NULL,
+    "Risk"          SMALLINT        NULL,
+    "Confidence"    SMALLINT        NULL,
+    "Url"           VARCHAR (500)   NULL,
+    "Other"         TEXT            NULL,
+    "Parameter"     TEXT            NULL,
+    "Attack"        TEXT            NULL,
+    "Evidence"      TEXT            NULL,
+    "Description"   TEXT            NULL,
+    "Reference"     TEXT            NULL,
+    "Solution"      TEXT            NULL,
+    "CWEId"         INT             NULL,
+    "WASCId"        INT             NULL,
+    "IsDeleted"     BOOLEAN         NOT NULL,
+    "CreatedById"   INT             NOT NULL,
+    "CreatedOn"     TIMESTAMP       NOT NULL,
+    "ModifiedById"  INT             NULL,
+    "ModifiedOn"    TIMESTAMP       NULL,
+    CONSTRAINT PK_DynamicScanResult PRIMARY KEY ("Id"),
+    CONSTRAINT FK_DynamicScanResult_DynamicScanId_DynamicScan_Id FOREIGN KEY ("DynamicScanId") REFERENCES "SecurityAnalyzer"."DynamicScan" ("Id")
+);
+

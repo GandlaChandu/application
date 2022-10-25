@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.HttpService.Abstraction" Version="1.0.21" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Models" Version="1.0.14" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.9" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Common\Com.ACSCorp.Accelerator.QueueAPI.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Enums\Com.ACSCorp.Accelerator.QueueAPI.Enums.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Models\Com.ACSCorp.Accelerator.QueueAPI.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Repository\Com.ACSCorp.Accelerator.QueueAPI.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

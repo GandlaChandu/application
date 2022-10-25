@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <id>Com.ACSCorp.Accelerator.Core.HttpService.Abstraction</id>
+    <version>1.0.21</version>
+    <title>ACSCorp Core Service</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Abstraction on Http service</description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
+  </ItemGroup>
+
+</Project>

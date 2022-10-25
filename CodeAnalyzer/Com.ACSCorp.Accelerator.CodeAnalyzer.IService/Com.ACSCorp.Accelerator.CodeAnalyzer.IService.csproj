@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.IService" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.Models\Com.ACSCorp.Accelerator.CodeAnalyzer.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.Reports\Com.ACSCorp.Accelerator.CodeAnalyzer.Reports.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter\Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter.csproj" />
+  </ItemGroup>
+
+</Project>

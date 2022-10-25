@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Authorization" Version="1.0.21" />
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.9" />
+    <PackageReference Include="Octokit" Version="0.48.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.TicketManagementSystem.Common\Com.ACSCorp.Accelerator.TicketManagementSystem.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.TicketManagementSystem.IRepository\Com.ACSCorp.Accelerator.TicketManagementSystem.IRepository.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.TicketManagementSystem.IService\Com.ACSCorp.Accelerator.TicketManagementSystem.IService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.TicketManagementSystem.Models\Com.ACSCorp.Accelerator.TicketManagementSystem.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="Com.ACSCorp.Accelerator.Core.Authorization" Version="1.0.21" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.HttpService.Abstraction" Version="1.0.21" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Utility" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Common\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IRepository\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IRepository.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IService\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Models\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Validators\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Validators.csproj" />
+  </ItemGroup>
+
+</Project>

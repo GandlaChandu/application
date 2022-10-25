@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Models" Version="1.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Enums\Com.ACSCorp.Accelerator.QueueAPI.Enums.csproj" />
+  </ItemGroup>
+
+</Project>

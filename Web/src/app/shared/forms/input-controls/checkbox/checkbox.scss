@@ -1,0 +1,30 @@
+@import '../../../../../theme.scss';
+
+.chb-lg {
+    height: 20px;
+    width: 20px;
+}
+
+.chb-label-right {
+    padding: {
+        left: 5px;
+    }
+
+    margin: {
+        top: 1%;
+    }
+}
+
+.chb-label-left {
+    padding: {
+        right: 5px;
+    }
+
+    margin: {
+        left: -15px !important;
+        right: 4%;
+        top: 1%;
+    }
+
+    width: auto !important;
+}

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <id>Com.ACSCorp.Accelerator.Core.Repository.Abstraction</id>
+    <version>1.0.12</version>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library is an abstraction for Com.ACSCorp.Accelerator.Core.Repository.</description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+  </ItemGroup>
+
+</Project>

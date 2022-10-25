@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Common\Com.ACSCorp.Accelerator.QueueAPI.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Models\Com.ACSCorp.Accelerator.QueueAPI.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Repository\Com.ACSCorp.Accelerator.QueueAPI.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

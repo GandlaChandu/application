@@ -1,0 +1,16 @@
+@import '../../../../theme.scss';
+
+/*.accordion {
+    border: {
+        style: solid;
+        width: 1px;
+        color: rgba(0, 0, 0, .125);
+    }
+    .accordion-title {
+        background-color: $g-secondary-color;
+    }
+}*/
+
+.accordion-header {
+    cursor: pointer;
+}

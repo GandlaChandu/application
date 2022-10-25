@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <id>Com.ACSCorp.Accelerator.Core.DependencyResolver</id>
+    <version>1.0.22</version>
+    <authors>Com.ACSCorp.Accelerator.Core.DependencyResolver</authors>
+    <owners>Com.ACSCorp.Accelerator.Core.DependencyResolver</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library contains dependency resolvers things required for the project.</description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Authorization\Com.ACSCorp.Accelerator.Core.Authorization.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.HttpService\Com.ACSCorp.Accelerator.Core.HttpService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.Models\Com.ACSCorp.Accelerator.Core.Models.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.Core.TemplateRenderAdapter\Com.ACSCorp.Accelerator.Core.RenderTemplateAdapter.csproj" />
+  </ItemGroup>
+</Project>

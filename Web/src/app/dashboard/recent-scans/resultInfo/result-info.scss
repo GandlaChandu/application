@@ -1,0 +1,70 @@
+@import '../../../../theme.scss';
+
+.recent-scan-table {
+    td {
+        p {
+            overflow-wrap: break-word;
+            font-weight: 500;
+        }
+    }
+}
+
+.link-width {
+    min-width: 300px;
+    overflow-wrap: break-word;
+}
+
+.p-name-width {
+    width: 200px;
+}
+
+.date-width {
+    width: 150px;
+}
+
+.counts {
+    text-align: left;
+    display: flex;
+
+    label {
+        flex: 33%;
+    }
+}
+
+.high-color {
+
+    .disc-warning,
+    .disc-info {
+        display: none !important;
+    }
+}
+
+.medium-color {
+
+    .disc-danger,
+    .disc-info {
+        display: none !important;
+    }
+}
+
+.low-color {
+
+    .disc-warning,
+    .disc-danger {
+        display: none !important;
+    }
+}
+th{
+    color: $g-primary-color;
+    font-weight: 500;
+}
+.link-name{
+    width: 300px;
+    overflow-wrap: break-word;
+}
+.p-name-width{
+    width: 200px;
+}
+.date-width{
+    width: 150px;
+}

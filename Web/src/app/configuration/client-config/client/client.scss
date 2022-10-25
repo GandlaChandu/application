@@ -1,0 +1,26 @@
+@import '../../../../theme.scss';
+
+.horizontal-tab {
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
+.horizontal-tab-content {
+    .card .card-body {
+        border: none;
+        padding: 12px 0 0 0 ;
+    }
+}
+
+// .nav-tabs .nav-link:focus,
+// .nav-tabs .nav-link:hover,
+// .nav-tabs .nav-link {
+//     border: none;
+// }
+.nav-tabs .nav-link {
+    font-size: 14px;
+    font-weight: normal;
+    @media (max-width : 640px){
+        font-size: 12px;
+    }
+}

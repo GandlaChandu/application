@@ -1,0 +1,1 @@
+export * from './dynamic-policy-category-manager.component';

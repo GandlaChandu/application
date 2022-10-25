@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Dependencies" Version="1.0.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Common\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.DependenciesConfigurator\Com.ACSCorp.Accelerator.ApplicationAnalyzer.DependencyResolver.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IService\Com.ACSCorp.Accelerator.ApplicationAnalyzer.IService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Models\Com.ACSCorp.Accelerator.ApplicationAnalyzer.Models.csproj" />
+  </ItemGroup>
+
+
+</Project>

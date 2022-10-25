@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Authorization" Version="1.0.21" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.HttpService" Version="1.0.22" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.RenderTemplateAdapter" Version="1.0.1" />
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Utility" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.Common\Com.ACSCorp.Accelerator.SecurityAnalyzer.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.IRepository\Com.ACSCorp.Accelerator.SecurityAnalyzer.IRepository.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.IService\Com.ACSCorp.Accelerator.SecurityAnalyzer.IService.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.OWASPAdapter\Com.ACSCorp.Accelerator.SecurityAnalyzer.OWASPAdapter.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.SecurityAnalyzer.Reports\Com.ACSCorp.Accelerator.SecurityAnalyzer.Reports.csproj" />
+  </ItemGroup>
+
+</Project>

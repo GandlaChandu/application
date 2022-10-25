@@ -1,0 +1,89 @@
+@import './theme.scss';
+
+@mixin btn-mixin {
+    letter-spacing: $g-button-font-spacing;
+    text-transform: $g-button-font-transform;
+    font-size: $g-button-font-size;
+    border-radius: 2px;
+
+    padding: {
+        left: 18px;
+        right: 18px;
+        top: 8px;
+        bottom: 8px;
+    }
+
+    font: {
+        weight: $g-button-font-weight;
+        size: $g-button-font-size;
+        family: $g-font-family !important;
+    }
+
+    border-width: 1.5px;
+
+    margin: {
+        left: 2px;
+        right: 2px;
+    }
+
+}
+
+@mixin tab-nav-link-mixin {
+    border-radius: 0px;
+    background-color: $g-tab-bg-color;
+
+    &.active {
+        background-color: $g-tab-active-bg-color !important;
+        color: $g-tab-active-color;
+        border-color: $g-card-body-color;
+        border-radius: 0px;
+    }
+}
+
+@mixin horizontal-tab-mixin {
+    margin-bottom: -1px;
+    border-bottom-color: $g-card-body-color;
+
+    button {
+
+        @include btn-mixin;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        border-radius: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        border-bottom-color: $g-card-body-color;
+        background-color: $g-tab-bg-color;
+
+        @include tab-nav-link-mixin;
+    }
+}
+
+@mixin horizontal-tab-content-mixin {
+    background-color: $g-card-body-color !important;
+    width: 100%;
+
+    .tab-pane {
+        background-color: $g-card-body-color !important;
+
+        &.active {
+            label {
+                color: black !important;
+            }
+        }
+    }
+
+    .card {
+        border: none;
+
+        .card-body {
+            border: none;
+            box-shadow: none;
+            // background-color: $g-card-body-color !important;
+            border: 0.5px solid #CDCFD2;
+            border-radius: 2px;
+        }
+    }
+}

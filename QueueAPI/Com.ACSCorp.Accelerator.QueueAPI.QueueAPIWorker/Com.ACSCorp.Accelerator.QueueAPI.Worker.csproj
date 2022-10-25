@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-QueueAPIWorkerService-61571A30-3DDB-47F1-8925-A129746AB2A1</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.ACSCorp.Accelerator.Core.Dependencies" Version="1.0.22" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Common\Com.ACSCorp.Accelerator.QueueAPI.Common.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.DependencyResolver\Com.ACSCorp.Accelerator.QueueAPI.DependencyResolver.csproj" />
+    <ProjectReference Include="..\Com.ACSCorp.Accelerator.QueueAPI.Models\Com.ACSCorp.Accelerator.QueueAPI.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

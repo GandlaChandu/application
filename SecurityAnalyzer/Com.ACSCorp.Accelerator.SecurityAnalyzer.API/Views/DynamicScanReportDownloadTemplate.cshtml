@@ -1,0 +1,133 @@
+﻿@model Com.ACSCorp.Accelerator.SecurityAnalyzer.Models.DynamicScanReportModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+</head>
+<body>
+    <div class="firstpage">
+        <h1>Dynamic Scan Report</h1>
+        <div class="summary">
+            <div>As of: <span class="label">@Model.ScanDate</span></div>
+            <div>Prepared for: <span class="label">@Model.ClientName</span></div>
+            <div>Prepared on: <span class="label">@DateTime.Now.ToShortDateString()</span></div>
+            <div>Project Name: <span class="label">@Model.ProjectName</span></div>
+            <div>Required Analysis: <span class="label">Dynamic</span></div>
+        </div>
+        <div class="table-content">
+            <h2>Inside this Report</h2>
+            <div>
+                <h3>Scope of Dynamic scan</h3>
+                <h3>Flaws by Severity and Category</h3>
+                <h3>Detailed Flaws by Severity </h3>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h1>Scope of Dynamic scan</h1>
+        <h3>These are the parameters that were used to perform the dynamic scan:</h3>
+        <table>
+            <tr>
+                <th>Setting</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Target URL</td>
+                <td>@Model.Scope.TargetURL</td>
+            </tr>
+            <tr>
+                <td>Number of Links Visited</td>
+                <td>@Model.Scope.LinksCrawled</td>
+            </tr>
+            <tr>
+                <td>Login UserId</td>
+                <td>@Model.Scope.LoginUserId</td>
+            </tr>
+            <tr>
+                <td>Scan Window</td>
+                <td>@Model.Scope.ScanWindow</td>
+            </tr>
+            <tr>
+                <td>Scan Duration</td>
+                <td>@Model.Scope.ScanDuration mins</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>Flaws by Severity and Category</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Risk Level</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var severityGroup in Model.SeverityGroupIssues)
+                {
+                    <tr>
+                        <td class="severity-header">@severityGroup.Severity</td>
+                        <td class="label">@severityGroup.IssueCount</td>
+                    </tr>
+                    @foreach (var cweInfo in severityGroup.CweList)
+                    {
+                        <tr>
+                            <td>@cweInfo.Name</td>
+                            <td>@cweInfo.Issues.Count</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <th>Total</th>
+                    <td class="label">@Model.Issues.Count</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>Detailed Flaws by Severity</h1>
+
+        @foreach (var severityGroup in Model.SeverityGroupIssues)
+        {
+            <h2>@severityGroup.Severity (@severityGroup.IssueCount issues)</h2>
+            @foreach (var cweInfo in severityGroup.CweList)
+            {
+                if (cweInfo.CweId == 0)
+                {
+                    <h3>@cweInfo.Name (@cweInfo.Issues.Count issues)</h3>
+                }
+                else
+                {
+                    <h3>CWE #@cweInfo.CweId - @cweInfo.Name (@cweInfo.Category) (@cweInfo.Issues.Count issues)</h3>
+                    <h3>Description</h3>
+                    <div>@cweInfo.Description</div>
+                    <h3>Recommendation</h3>
+                    <div>@cweInfo.Recommendation</div>
+                }
+
+                <h3>Instances found via Dynamic Scan</h3>
+                <table>
+                    <tr>
+                        <th class="left-align">Url</th>
+                        <th>Parameter</th>
+                    </tr>
+                    @foreach (var issue in cweInfo.Issues)
+                    {
+                        <tr>
+                            <td class="left-align break-all">
+                                @issue.Url
+                            </td>
+                            <td>
+                                @issue.Parameter
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        }
+    </div>
+</body>
+</html>

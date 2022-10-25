@@ -1,0 +1,19 @@
+﻿@model Com.ACSCorp.Accelerator.Core.Models.Email.EmailBodyModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+</head>
+<body>
+    <div style="padding: 10px 0">
+        Hi @Model.UserName,
+        <br />
+        <br />
+        Please find the attached report of dynamic scan performed on <b>@Model.ProjectName</b> of <b>@Model.ClientName</b> client.
+        <br />
+        <br />
+    </div>
+</body>
+</html>
+
