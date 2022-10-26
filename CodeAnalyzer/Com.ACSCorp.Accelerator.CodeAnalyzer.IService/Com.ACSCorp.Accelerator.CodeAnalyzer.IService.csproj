@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Com.ACSCorp.Accelerator.Core.IService" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

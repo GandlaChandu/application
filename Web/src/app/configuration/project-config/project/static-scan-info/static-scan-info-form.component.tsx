@@ -19,7 +19,8 @@ import {
     AccordionComponent,
     CardComponent,
     ComponentBase,
-    ButtonComponent,
+    ButtonComponent,
+
     CheckboxComponent
 } from '../../../../shared';
 import { Constant, EntityType } from '../../../../utilities';
@@ -109,7 +110,7 @@ export class StaticScanInfoFormComponent extends ComponentBase<StaticScanInfoFor
                                                                 },
                                                                 {
                                                                     validatorType: ValidatorType.Pattern,
-                                                                    config: RegexTypeConstant.urlOnly,
+                                                                    config: RegexTypeConstant.gitUrl,
                                                                     errorMessage: StaticScanInfoFormConstant.errorMessage.codeUrlInvalid
                                                                 }
                                                             ]

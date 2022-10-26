@@ -371,7 +371,7 @@ export class TicketingSystemInfoFormComponent extends ComponentBase<TicketingSys
                                     },
                                     {
                                         validatorType: ValidatorType.Pattern,
-                                        config: RegexTypeConstant.urlOnly,
+                                        config: RegexTypeConstant.gitUrl,
                                         errorMessage: TicketingSystemInfoFormConstant.errorMessage.ticketingSystemEnterpriseUrlInValid
                                     }
                                 ]
