@@ -250,6 +250,7 @@ export class ProjectActionCreator {
                             codeAnalysisFormInfo.sourceControlTypeId = codeAnalysis.sourceControlType;
                             codeAnalysisFormInfo.isTokenBased = codeAnalysis.isTokenBased;
                             codeAnalysisFormInfo.staticScanTypes = codeAnalysis.staticScanPreferences.map(x => x.staticScanTypeId);
+                            codeAnalysisFormInfo.projectPath = codeAnalysis.projectPath;
                             dispatch({
                                 type: ProjectActionType.FetchCodeAnalysisInfo,
                                 payload: {

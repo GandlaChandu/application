@@ -21,4 +21,5 @@ export class StaticScanDetailModel {
 	public ticketSystemType?: number;
 	public value?: any;
 	public isTokenBased?: boolean;
+	public projectPath: string;
 }

@@ -15,6 +15,7 @@ export class StaticScanInfoFormModel {
     public sourceControlTypeId: number;
     public projectId: number;
     public isTokenBased: boolean;
+    public projectPath: string;
 
     constructor() {
         this.staticScanTypes = [];

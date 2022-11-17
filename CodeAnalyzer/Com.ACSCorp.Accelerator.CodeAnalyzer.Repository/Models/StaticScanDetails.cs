@@ -22,6 +22,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Repository.Models
         public DateTime CreatedOn { get; set; }
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedOn { get; set; }
+        public string ProjectPath { get; set; }
 
         public virtual ICollection<StaticScanType> StaticScanType { get; set; }
     }

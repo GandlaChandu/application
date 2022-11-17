@@ -365,7 +365,14 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service
 
                 //Run Scan
                 IStaticScan staticScan = _staticScanServiceAccessor(staticScanDetails.SourceCodeType);
-                string sonarQubeAnalysisTaskId = staticScan.RunScan(projectKey.ToString());
+
+                string projectPath = projectKey.ToString();
+                if (!string.IsNullOrWhiteSpace(staticScanDetails.ProjectPath))
+                {
+                    projectPath = $"{projectPath}\\{staticScanDetails.ProjectPath}";
+                }
+
+                string sonarQubeAnalysisTaskId = staticScan.RunScan(projectPath);
 
                 //Update WaitingForResults.
                 // staticScanDTO.StatusId = (int)StaticScanStatus.WaitingForResult;

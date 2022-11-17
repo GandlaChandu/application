@@ -30,5 +30,8 @@ export class StaticScanInfoFormConstant {
 
         public static readonly tokenRequired: string = `Token ${Constant.message.requiredMessage}`;
 
+        public static readonly directoryPathInvalid: string = `Not a valid directory Path`;
+
+
     }
 }

@@ -5,8 +5,8 @@
         /// <summary>
         /// Run Static Scan
         /// </summary>
-        /// <param name="projectKey"></param>
+        /// <param name="projectPath"></param>
         /// <returns>taskId</returns>
-        public string RunScan(string projectKey);
+        public string RunScan(string projectPath);
     }
 }

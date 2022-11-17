@@ -12,6 +12,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsTokenBased { get; set; }
+        public string ProjectPath { get; set; }
         public SourceCodeType SourceCodeType { get; set; }
         public SourceControlType SourceControlType { get; set; }
         public List<StaticScanTypeDTO> StaticScanPreferences { get; set; }

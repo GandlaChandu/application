@@ -190,6 +190,30 @@ export class StaticScanInfoFormComponent extends ComponentBase<StaticScanInfoFor
                                             </FormFieldComponent>
                                         </div>
                                     </div>
+                                    <div className="col-sm-12 col-md-6">
+                                        <div className="form-group">
+                                            <div className="form-group">
+                                                <FormFieldComponent
+                                                    name="projectPath"
+                                                    component={TextboxComponent}
+                                                    props={
+                                                        {
+                                                            id: 'txt_project_static_scan_form_project_path',
+                                                            label: 'Project Path',
+                                                            validations: [
+                                                                {
+                                                                    validatorType: ValidatorType.Pattern,
+                                                                    config: RegexTypeConstant.directoryPath,
+                                                                    errorMessage: StaticScanInfoFormConstant.errorMessage.directoryPathInvalid
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                >
+                                                </FormFieldComponent>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
                                     <div className="form-group form-row">

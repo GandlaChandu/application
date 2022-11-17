@@ -17,7 +17,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
         {
             _configuration = configuration;
         }
-        public string RunScan(string projectKey)
+        public string RunScan(string projectPath)
         {
             string baseRepositoryPath = _configuration[AppSettingConstants.BaseRepositoryPath];
             SonarQubeCredentials sonarQubeCredentials = _configuration.GetSection(SonarServerInfo).Get<SonarQubeCredentials>();
@@ -25,12 +25,12 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
             string taskId;
 
             //Move to project path
-            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectKey}\\src");
+            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectPath}\\src");
             RunCommand(cmd);
 
             //Run Command
             cmd = string.Format(CMDConstants.GenericScannerCommands.GenericScan,
-                projectKey, sonarQubeCredentials.Url,
+                projectPath, sonarQubeCredentials.Url,
                 sonarQubeCredentials.UserName,
                 sonarQubeCredentials.Password);
             string outputResult = RunCommand(cmd);

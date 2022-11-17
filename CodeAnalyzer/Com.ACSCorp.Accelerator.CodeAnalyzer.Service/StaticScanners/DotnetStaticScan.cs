@@ -20,9 +20,9 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
         /// <summary>
         /// Run Dotnet Scan
         /// </summary>
-        /// <param name="projectKey"></param>
+        /// <param name="projectPath"></param>
         /// <returns></returns>
-        public string RunScan(string projectKey)
+        public string RunScan(string projectPath)
         {
             string baseRepositoryPath = _configuration[AppSettingConstants.BaseRepositoryPath];
             SonarQubeCredentials sonarQubeCredentials = _configuration.GetSection(SonarServerInfo).Get<SonarQubeCredentials>();
@@ -30,7 +30,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
             string taskId;
 
             //Move to project path
-            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectKey}");
+            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectPath}");
             RunCommand(cmd);
 
             //Begin Scan
@@ -39,7 +39,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
                 sonarQubeCredentials.Url,
                 sonarQubeCredentials.UserName,
                 sonarQubeCredentials.Password,
-                projectKey);
+                projectPath);
             RunCommand(cmd);
 
             //Build Project

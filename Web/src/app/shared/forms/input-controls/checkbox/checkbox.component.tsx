@@ -43,8 +43,8 @@ export class CheckboxComponent extends ControlComponentBase<CheckcboxPropModel> 
                         id={this.props.id}
                         onChange={this.onCheckChange.bind(this)}
                         disabled={this.props.disabled}
-                        value={this.props.value ? 'true' : 'false'}
-                        checked={this.props.value ? true : false}
+                        value={this.props.input.value}
+                        checked={this.props.input.value ? true : false}
                     />
                     {this.renderCheckboxLabel(!this.props.isLabelLeft)}
                 </div>
@@ -66,7 +66,7 @@ export class CheckboxComponent extends ControlComponentBase<CheckcboxPropModel> 
         if (this.props.input.onChange) {
             this.props.input.onChange(event.target.checked);
         }
-    }
+    }       
 
     //#endregion event callbacks/public methods
 

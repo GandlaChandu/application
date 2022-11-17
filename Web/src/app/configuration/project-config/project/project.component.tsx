@@ -196,6 +196,7 @@ export class ProjectComponent extends ComponentBase<ProjectPropModel> {
                 staticScanTypeId: item
             };
         })
+        staticScanRequest.projectPath = formData.projectPath;
         this.props.dispatchSaveCodeAnalysis(staticScanRequest,
             (response) => {
                 this.handleApiSaveSuccess(response);
@@ -288,7 +289,7 @@ export class ProjectComponent extends ComponentBase<ProjectPropModel> {
                                 className={this.props.showTab === ProjectConstant.userMap ? 'nav-link active' : 'nav-link'}
                                 onClick={this.onUserTabClick.bind(this)}>
                                 User Maps
-                             </button>
+                            </button>
                         </li>
                     </ul>
                     <div className="tab-content horizontal-tab-content">

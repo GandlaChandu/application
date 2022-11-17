@@ -17,14 +17,14 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
         {
             _configuration = configuration;
         }
-        public string RunScan(string projectKey)
+        public string RunScan(string projectPath )
         {
             string baseRepositoryPath = _configuration[AppSettingConstants.BaseRepositoryPath];
             SonarQubeCredentials sonarQubeCredentials = _configuration.GetSection(SonarServerInfo).Get<SonarQubeCredentials>();
             string cmd;
             string taskId;
             //Move to project path
-            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectKey}");
+            cmd = string.Format(CMDConstants.MoveToProjectFolder, $"{baseRepositoryPath}{projectPath}");
             RunCommand(cmd);
 
             //MVN Clean & Install
@@ -36,7 +36,7 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service.StaticScanners
                 sonarQubeCredentials.Url,
                 sonarQubeCredentials.UserName,
                 sonarQubeCredentials.Password,
-                projectKey);
+                projectPath);
             string outputResult = RunCommand(cmd);
             taskId = FindTaskId(outputResult);
 

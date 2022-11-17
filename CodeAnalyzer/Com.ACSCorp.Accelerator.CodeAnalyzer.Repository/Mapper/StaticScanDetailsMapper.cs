@@ -26,7 +26,8 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Repository.Mapper
                 IsTokenBased = string.IsNullOrWhiteSpace(entity.Password),
                 SourceCodeType = (SourceCodeType)entity.SourceCodeType,
                 SourceControlType = (SourceControlType)entity.SourceControlType,
-                IsDeleted = entity.IsDeleted
+                IsDeleted = entity.IsDeleted,
+                ProjectPath = entity.ProjectPath,
             };
 
             CommonMapper.MapBaseDTODetails(entity, staticScanDetails);
@@ -50,7 +51,8 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Repository.Mapper
                 Password = scanDTO.IsTokenBased ? string.Empty : scanDTO.Password,
                 SourceCodeType = (short)scanDTO.SourceCodeType,
                 SourceControlType = (short)scanDTO.SourceControlType,
-                IsDeleted = scanDTO.IsDeleted
+                IsDeleted = scanDTO.IsDeleted,
+                ProjectPath = scanDTO.ProjectPath,
             };
 
             return staticScanDetails;

@@ -1,8 +1,13 @@
 version: "3"
 
 services:
+  owasp_zap:
+    image: owasp/zap2docker-stable:2.12.0
+    command: zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config api.key=dh16pck8m7m08ihknupsnra2rd
+    ports:
+      - "8080:8080"
   sonarqube:
-    image: sonarqube:community
+    image: sonarqube:9.7.1-community
     depends_on:
       - db
     environment:
@@ -23,6 +28,8 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   sonarqube_data:
