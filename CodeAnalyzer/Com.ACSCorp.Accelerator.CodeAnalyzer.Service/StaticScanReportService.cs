@@ -74,6 +74,32 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service
             return Result.Ok(report);
         }
 
+        public async Task<Result<Report>> GenerateReportAsync(string projectKey, ReportFormat reportFormat = ReportFormat.Excel)
+        {
+            Result<StaticScanReportModel> reportResult = await GetStaticScanReportDataAsync(projectKey);
+
+            if (!reportResult.IsSucceeded)
+            {
+                return Result.Fail<Report>(reportResult.GetErrorString());
+            }
+
+            if (reportFormat == ReportFormat.Excel)
+            {
+                var overviewResult = await _staticScanResultService.GetStaticScanOverviewAsync(projectKey);
+                if (overviewResult.IsSucceeded)
+                {
+                    reportResult.Value.CodeCoverage = overviewResult.Value;
+                }
+            }
+
+            var staticScanReportFactory = new StaticScanReportFactory();
+
+            IStaticScanReport staticScanReport = staticScanReportFactory.GetReport(reportFormat);
+            Report report = staticScanReport.Generate(reportResult.Value);
+
+            return Result.Ok(report);
+        }
+
         #endregion Public Methods
 
         #region Private Methods
@@ -157,6 +183,23 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service
                 ClientName = projectResult.Value.ClientName,
                 ScanDate = staticScan.CreatedOn.ToString(),
                 Scope = BuildStaticScanScope(staticScan),
+                Issues = staticScanIssuesResult.Value,
+                SeverityGroupIssues = BuildSeverityGroupIssues(staticScanIssuesResult.Value, cweInfo)
+            };
+
+            return Result.Ok(staticScanReportModel);
+        }
+
+        private async Task<Result<StaticScanReportModel>> GetStaticScanReportDataAsync(string projectKey)
+        {
+            Result<List<SonarIssueDTO>> staticScanIssuesResult = await _staticScanResultService.GetScanResultsBySonarProjectKey(projectKey);
+
+            List<CweInfoDTO> cweInfo = await BuildCweInfoListAsync(staticScanIssuesResult.Value);
+
+            var staticScanReportModel = new StaticScanReportModel
+            {
+                ProjectName = projectKey,
+                Scope = new StaticScanReportScopeModel(),
                 Issues = staticScanIssuesResult.Value,
                 SeverityGroupIssues = BuildSeverityGroupIssues(staticScanIssuesResult.Value, cweInfo)
             };

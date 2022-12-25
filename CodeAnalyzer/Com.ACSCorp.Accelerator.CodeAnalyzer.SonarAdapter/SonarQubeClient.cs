@@ -65,7 +65,27 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter
             return Result.Ok(issues);
         }
 
+        public async Task<Result<List<SonarIssueDTO>>> GetScanResult(string projectKey, string types)
+        {
+            Result<SonarStaticScanResultDTO> issuesResponse = await GetIssuesAsync(projectKey, types, null);
+
+            if (!issuesResponse.IsSucceeded)
+            {
+                return Result.Fail<List<SonarIssueDTO>>(issuesResponse.GetErrorString());
+            }
+
+            var issues = issuesResponse.Value.ToStaticScanIssues();
+            await MapCweIdsAsync(projectKey, types, issuesResponse, issues);
+
+            return Result.Ok(issues);
+        }
+
         public async Task<Result<StaticScanOverviewDTO>> GetScanOverviewAsync(Guid componentKey)
+        {
+            return await GetScanOverviewAsync(componentKey.ToString());
+        }
+
+        public async Task<Result<StaticScanOverviewDTO>> GetScanOverviewAsync(string componentKey)
         {
             string commaSeparatedMetrics =
                 string.Join(",",
@@ -226,7 +246,12 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter
 
         private async Task<Result<SonarStaticScanResultDTO>> GetIssuesAsync(IssueListParametersDTO parameters, Pagination pagination, string cweId = "")
         {
-            string issuesUri = $"issues/search?componentKeys={parameters.ProjectKey}&s=FILE_LINE&additionalFields=_all&types={parameters.Types}";
+           return await GetIssuesAsync(parameters.ProjectKey.ToString(), parameters.Types, pagination, cweId);
+        }
+
+        private async Task<Result<SonarStaticScanResultDTO>> GetIssuesAsync(string projectKey, string types, Pagination pagination, string cweId = "")
+        {
+            string issuesUri = $"issues/search?componentKeys={projectKey}&s=FILE_LINE&additionalFields=_all&types={types}";
 
             if (!string.IsNullOrWhiteSpace(cweId))
             {
@@ -265,6 +290,23 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter
                     if (!cweId.Val.Equals("unknown"))
                     {
                         var cweIssuesResponse = await GetIssuesAsync(parameters, null, cweId.Val);
+                        MapCweIds(Convert.ToInt32(cweId.Val), issues, cweIssuesResponse.Value);
+                    }
+                }
+            }
+        }
+
+        private async Task MapCweIdsAsync(string projectKey, string types, Result<SonarStaticScanResultDTO> issuesResponse, List<SonarIssueDTO> issues)
+        {
+            var cweIds = issuesResponse.Value?.Facets?.FirstOrDefault(c => c.Property.Equals("cwe"));
+
+            if (cweIds != null)
+            {
+                foreach (var cweId in cweIds.Values)
+                {
+                    if (!cweId.Val.Equals("unknown"))
+                    {
+                        var cweIssuesResponse = await GetIssuesAsync(projectKey, types, null, cweId.Val);
                         MapCweIds(Convert.ToInt32(cweId.Val), issues, cweIssuesResponse.Value);
                     }
                 }

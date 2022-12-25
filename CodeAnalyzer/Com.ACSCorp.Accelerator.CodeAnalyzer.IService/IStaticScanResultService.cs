@@ -9,7 +9,9 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.IService
     public interface IStaticScanResultService
     {
         public Task<Result<StaticScanOverviewDTO>> GetStaticScanOverviewAsync(int scanId);
+        public Task<Result<StaticScanOverviewDTO>> GetStaticScanOverviewAsync(string projectKey);
         public Task<Result<ListResult<SonarIssueDTO>>> GetStaticScanResultsAsync(int scanId, Pagination pagination = null);
         public Task<Result<List<SonarIssueDTO>>> GetScanResultsByProjectAndStaticScanDtails(ProjectDTO project, StaticScanDetailsDTO staticScanDetails);
+        public Task<Result<List<SonarIssueDTO>>> GetScanResultsBySonarProjectKey(string sonarProjectKey);
     }
 }

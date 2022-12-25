@@ -27,6 +27,14 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter.Interfaces
         public Task<Result<List<SonarIssueDTO>>> GetScanResultByScanIdAsync(IssueListParametersDTO parameters);
 
         /// <summary>
+        /// It will get list of issues
+        /// </summary>
+        /// <param name="projectKey"></param>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        public Task<Result<List<SonarIssueDTO>>> GetScanResult(string projectKey, string types);
+
+        /// <summary>
         /// Get rules
         /// </summary>
         /// <param name="ruleListRequest"></param>
@@ -39,6 +47,13 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.SonarAdapter.Interfaces
         /// <param name="componentKey"></param>
         /// <returns></returns>
         public Task<Result<StaticScanOverviewDTO>> GetScanOverviewAsync(Guid componentKey);
+
+        /// <summary>
+        /// Get scan overview
+        /// </summary>
+        /// <param name="componentKey"></param>
+        /// <returns></returns>
+        public Task<Result<StaticScanOverviewDTO>> GetScanOverviewAsync(string componentKey);
 
         /// <summary>
         /// Add quality profile

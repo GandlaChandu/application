@@ -105,6 +105,11 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service
             return result;
         }
 
+        public async Task<Result<List<SonarIssueDTO>>> GetScanResultsBySonarProjectKey(string sonarProjectKey)
+        {
+            return await _sonarQubeClient.GetScanResult(sonarProjectKey, $"{SonarIssueTypeConstants.IssueTypeBug},{SonarIssueTypeConstants.IssueTypeCodeSmell},{SonarIssueTypeConstants.IssueTypeVulnerability}");
+        }
+
         public async Task<Result<StaticScanOverviewDTO>> GetStaticScanOverviewAsync(int scanId)
         {
             Result<ProjectDTO> projectResult = await GetProjectByScanIdAsync(scanId);
@@ -130,6 +135,13 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.Service
             }
 
             Result<StaticScanOverviewDTO> overviewResult = await _sonarQubeClient.GetScanOverviewAsync(projectResult.Value.Key);
+
+            return overviewResult;
+        }
+
+        public async Task<Result<StaticScanOverviewDTO>> GetStaticScanOverviewAsync(string projectKey)
+        {
+            Result<StaticScanOverviewDTO> overviewResult = await _sonarQubeClient.GetScanOverviewAsync(projectKey);
 
             return overviewResult;
         }

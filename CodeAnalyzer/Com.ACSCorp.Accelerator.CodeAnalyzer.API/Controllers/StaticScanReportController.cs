@@ -26,5 +26,13 @@ namespace Com.ACSCorp.Accelerator.CodeAnalyzer.API.Controllers
 
             return File(reportResult.Value.Bytes, reportResult.Value.MimeType, reportResult.Value.FileName);
         }
+
+        [HttpPost("DownloadReportBySonarProjectKey/{sonarProjectKey}/{reportFormat}")]
+        public async Task<IActionResult> DownloadReport(string sonarProjectKey, ReportFormat reportFormat)
+        {
+            var reportResult = await _staticScanReportService.GenerateReportAsync(sonarProjectKey, reportFormat);
+
+            return File(reportResult.Value.Bytes, reportResult.Value.MimeType, reportResult.Value.FileName);
+        }
     }
 }
